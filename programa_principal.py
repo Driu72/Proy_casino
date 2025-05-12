@@ -78,6 +78,7 @@ while menu_prin:
                 else:
                     console.print("[bold red]Opción no válida. Volverá al menú...[/bold red]")
                     os.system('cls')
+                    verif= True
 
         case '2':
             menu_noregistro = True
@@ -109,7 +110,7 @@ while menu_prin:
                         console.print("[bold red] Disculpe, pero sin SALDO no puede acceder al juego.[/bold red]")
                         input()
                     else:
-                        console.print("[bold cyan]🎰 REDIRIJIENDOSE AL JUEGO...[/bold cyan]")
+                        console.print("[bold cyan] REDIRIJIENDOSE AL JUEGO...[/bold cyan]")
                         saldo_noregistro = j3_CAL.Chuckaluck(saldo_noregistro)
 
                 elif opcion == '4':
@@ -163,8 +164,9 @@ while menu_prin:
                     opcion = input('Intentar de nuevo? (SI->1|NO->2) -> ')
                     if opcion == '2':
                         verif = True
-                    elif opcion != '1':
-                        verif = True
+                    elif opcion == '1':
+                        input('Volverá al menú principal')
+                        os.system('cls')
 
             while menu_registro:
                 os.system('cls')
@@ -174,26 +176,41 @@ while menu_prin:
                 opcion = Prompt.ask("[bold green]Elije una opción (ESCRIBA EL NÚMERO)[/bold green] ->")
 
                 if opcion == '1' and saldo_registro > 0:
+
                     console.print("[bold cyan]REDIRIJIENDOSE AL JUEGO...[/bold cyan]")
                     saldo_registro = j1_BJ.Blackjack(saldo_registro)
                     casino.actualizar_saldo(dni_reg, saldo_registro)
+
                 elif opcion == '2' and saldo_registro > 0:
+
                     console.print("[bold cyan]REDIRIJIENDOSE AL JUEGO...[/bold cyan]")
                     saldo_registro = j1_TRP.tragaperras(saldo_registro)
                     casino.actualizar_saldo(dni_reg, saldo_registro)
+
                 elif opcion == '3' and saldo_registro > 0:
+
                     console.print("[bold cyan]REDIRIJIENDOSE AL JUEGO...[/bold cyan]")
                     saldo_registro = j3_CAL.Chuckaluck(saldo_registro)
                     casino.actualizar_saldo(dni_reg, saldo_registro)
+
                 elif opcion == '4':
+
                     menu_registro = False
+
                 elif opcion == '5':
                     try:
                         saldo_ingreso = float(input('Cantidad a ingresar -> '))
                         casino.ingreso_saldo(saldo_ingreso, dni_reg)
                         console.print("[bold green]Ingreso realizado con éxito[/bold green]")
+                        console.print(F'SALDO -> {saldo_ingreso}')
+                        input()
+                        os.system()
+
                     except ValueError:
+
                         console.print("[bold red]Valor no válido[/bold red]")
+                        input()
+                        os.system('cls')
 
         case '4':
             casino.cerrarconexion()
