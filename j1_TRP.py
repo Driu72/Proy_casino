@@ -8,14 +8,8 @@ import os
 import random
 import imagenes_casino
 import time
-import pygame
 
 console = Console()
-
-pygame.init()
-pygame.mixer.init()
-pygame.mixer.music.stop()
-
 
 
 def generar_simbolos():
@@ -25,9 +19,6 @@ def generar_simbolos():
 def tragaperras(saldo):
     juegotp = True
     while juegotp:
-        pygame.mixer_music.load('musictpr.mp3')
-        pygame.mixer_music.play(-1)
-
         if saldo < 1:
             console.print("[bold red]No dispone de saldo suficiente, volverá al Menu de Juegos[/bold red]")
             input()
@@ -376,8 +367,6 @@ El objetivo es obtener combinaciones específicas de esos símbolos que otorgan 
 
         elif opcion == '3':
             console.print("[bold red]¡Vuelva pronto![/bold red]")
-            pygame.mixer.music.stop()
-            pygame.quit()
             os.system('cls')
             juegotp = False
             return saldo

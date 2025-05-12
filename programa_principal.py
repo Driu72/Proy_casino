@@ -10,11 +10,6 @@ from rich.panel import Panel
 from rich.console import Console
 from rich.prompt import Prompt
 from rich.align import Align
-import pygame
-
-pygame.init()
-pygame.mixer.init()
-pygame.mixer.music.stop()
 
 console = Console()
 
@@ -40,13 +35,11 @@ menu_juegos = """
 [bold cyan]8.[/bold cyan] Salir del Casino
 """
 
-pygame.mixer.music.load('musica_lobby.mp3')
 casino.conexionYcreacion()
 menu_prin = True
 
 while menu_prin:
     os.system('cls')
-    pygame.mixer.music.play(-1)
     console.print(mural, style="bold magenta")
     console.print(Panel(Align.center(menu_texto), title="[bold yellow]MENU PRINCIPAL[/bold yellow]", border_style="bright_blue"))
 
@@ -92,10 +85,6 @@ while menu_prin:
 
             while menu_noregistro:
                 os.system('cls')
-                pygame.init()
-                pygame.mixer.init()
-                pygame.mixer.music.load('musica_lobby.mp3')
-                pygame.mixer.music.play(-1)
                 console.print(Panel(Align.center(menu_juegos), title="[bold magenta]JUEGOS[/bold magenta]", border_style="bright_yellow"))
 
                 opcion = Prompt.ask("[bold green]Elije una opción (ESCRIBA EL NÚMERO)[/bold green] ->")
@@ -105,7 +94,6 @@ while menu_prin:
                         input()
                     else:
                         console.print("[bold cyan] REDIRIJIENDOSE AL JUEGO...[/bold cyan]")
-                        pygame.mixer.music.stop()
                         saldo_noregistro = j1_BJ.Blackjack(saldo_noregistro)
 
                 elif opcion == '2':
@@ -114,7 +102,6 @@ while menu_prin:
                         input()
                     else:
                         console.print("[bold cyan] REDIRIJIENDOSE AL JUEGO...[/bold cyan]")
-                        pygame.mixer.music.stop()
                         saldo_noregistro = j1_TRP.tragaperras(saldo_noregistro)
 
                 elif opcion == '3':
@@ -123,7 +110,6 @@ while menu_prin:
                         input()
                     else:
                         console.print("[bold cyan]🎰 REDIRIJIENDOSE AL JUEGO...[/bold cyan]")
-                        pygame.mixer.music.stop()
                         saldo_noregistro = j3_CAL.Chuckaluck(saldo_noregistro)
 
                 elif opcion == '4':
@@ -182,10 +168,6 @@ while menu_prin:
 
             while menu_registro:
                 os.system('cls')
-                pygame.init()
-                pygame.mixer.init()
-                pygame.mixer.music.load('musica_lobby.mp3')
-                pygame.mixer.music.play(-1)
                 saldo_registro = casino.dispo_saldo(dni_reg)
 
                 console.print(Panel(Align.center(menu_juegos), title="[bold magenta]JUEGOS[/bold magenta]", border_style="bright_yellow"))
@@ -193,17 +175,14 @@ while menu_prin:
 
                 if opcion == '1' and saldo_registro > 0:
                     console.print("[bold cyan]REDIRIJIENDOSE AL JUEGO...[/bold cyan]")
-                    pygame.mixer.music.stop()
                     saldo_registro = j1_BJ.Blackjack(saldo_registro)
                     casino.actualizar_saldo(dni_reg, saldo_registro)
                 elif opcion == '2' and saldo_registro > 0:
                     console.print("[bold cyan]REDIRIJIENDOSE AL JUEGO...[/bold cyan]")
-                    pygame.mixer.music.stop()
                     saldo_registro = j1_TRP.tragaperras(saldo_registro)
                     casino.actualizar_saldo(dni_reg, saldo_registro)
                 elif opcion == '3' and saldo_registro > 0:
                     console.print("[bold cyan]REDIRIJIENDOSE AL JUEGO...[/bold cyan]")
-                    pygame.mixer.music.stop()
                     saldo_registro = j3_CAL.Chuckaluck(saldo_registro)
                     casino.actualizar_saldo(dni_reg, saldo_registro)
                 elif opcion == '4':
@@ -219,8 +198,6 @@ while menu_prin:
         case '4':
             casino.cerrarconexion()
             console.print("[bold yellow]VUELVA PRONTO!![/bold yellow]")
-            pygame.mixer.music.stop()
-            pygame.quit()
             os.system('cls')
             menu_prin = False
 
