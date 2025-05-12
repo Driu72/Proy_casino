@@ -131,6 +131,8 @@ while menu_prin:
                         console.print(f"[bold cyan] Saldo disponible: {saldo_noregistro}[/bold cyan]")
                         input()
                     case '8':
+                        input('Cerrando programa...')
+                        casino.cerrarconexion()
                         menu_noregistro = False
                         menu_prin = False
 
@@ -205,6 +207,7 @@ while menu_prin:
                         console.print(f"[bold cyan] Saldo disponible: {saldo} [/bold cyan]")
                         input()
                     case '8':
+                        input('Cerrando programa...')
                         casino.cerrarconexion()
                         menu_registro = False
                         menu_prin = False
