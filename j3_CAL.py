@@ -6,14 +6,9 @@ from rich.align import Align
 import imagenes_casino
 import os
 import random
-import pygame
 import time
 
 console = Console()
-
-pygame.init()
-pygame.mixer.init()
-pygame.mixer.music.stop()
 
 def num_dado():
     return random.randint(1, 6)
@@ -47,8 +42,6 @@ def giro_dados():
     return valores
 
 def Chuckaluck(saldo):
-    pygame.mixer_music.load('luicasino.mp3')
-    pygame.mixer_music.play(-1)
     juego_activo = True
 
     while juego_activo:

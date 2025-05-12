@@ -6,10 +6,6 @@ from rich.align import Align
 import imagenes_casino
 import os
 import random
-import pygame
-
-pygame.init()
-pygame.mixer.init()
 
 def valor_carta(carta, puntos_actuales):
     if carta in ['J', 'Q', 'K']:
@@ -79,9 +75,6 @@ def calcular_puntos(mano):
     return puntos
 
 def Blackjack(saldo):
-    pygame.mixer.music.stop()
-    pygame.mixer_music.load('jazzblackjack.mp3')
-    pygame.mixer_music.play(-1)
     console = Console()
     juego_activo = True
 
@@ -215,8 +208,6 @@ def Blackjack(saldo):
             os.system('cls' if os.name == 'nt' else 'clear')
         elif opcion == '3':
             input('VUELVA PRONTO!')
-            pygame.mixer.music.stop()
-            pygame.quit()
             os.system('cls' if os.name == 'nt' else 'clear')
             return saldo
 
